@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "video-transcriber"
+version = "0.1.0"
+description = "Baja un video de YouTube, lo transcribe, clasifica los segmentos por categoría y genera un reporte HTML — TUI (Textual)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "textual>=0.60.0",
+    "python-dotenv>=1.0",
+    "openai>=1.30",
+    "anthropic>=0.41",
+    "yt-dlp>=2024.1.0",
+    "openai-whisper>=20231117",
+    "imageio-ffmpeg>=0.5.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+# Dedup semántico de categorías (src/rag/categories_store.py) — sin esto,
+# cae al juez LLM (src/video/classifier.py::judge_category_duplicate) o al
+# match exacto por nombre. La app funciona igual sin este extra.
+rag = ["chromadb>=0.5.0"]
+full = ["chromadb>=0.5.0"]
+
+[project.scripts]
+video-transcriber = "src.tui.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]

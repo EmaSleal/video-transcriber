@@ -1,0 +1,27 @@
+# ── LLM ────────────────────────────────────────────────────
+anthropic>=0.41
+openai>=1.30
+
+# ── Video ──────────────────────────────────────────────────
+yt-dlp>=2024.1.0             # descarga de video/audio
+openai-whisper>=20231117     # transcripción batch
+imageio-ffmpeg>=0.5.0        # ffmpeg portable, sin instalación de sistema
+
+# ── BD ─────────────────────────────────────────────────────
+# sqlite3 viene con Python — sin dependencia externa
+
+# ── TUI ────────────────────────────────────────────────────
+textual>=0.60.0
+rich>=13.0
+
+# ── Utilitarios ────────────────────────────────────────────
+python-dotenv>=1.0
+
+# ── Dedup semántico de categorías (opcional) ────────────────
+# Sin esto, category_dedup.py cae al juez LLM o al match exacto por
+# nombre — la app funciona igual, solo sin la vía de embeddings.
+chromadb>=0.5.0
+
+# ── Testing ─────────────────────────────────────────────────
+pytest>=8.0
+pytest-asyncio>=0.23
