@@ -1,5 +1,7 @@
 # Video Transcriber
 
+[![CI](https://github.com/EmaSleal/video-transcriber/actions/workflows/ci.yml/badge.svg)](https://github.com/EmaSleal/video-transcriber/actions/workflows/ci.yml)
+
 TUI (Textual) para bajar un video de YouTube, transcribirlo, clasificar
 los segmentos por categoría y generar un reporte HTML navegable.
 
@@ -31,6 +33,25 @@ URL de YouTube ──► yt-dlp (audio+video) ──► Whisper (transcripción)
   `chromadb` instalado — cae a substring/LLM-judge.
 
 ## Instalación
+
+Sin clonar el repo — instala como comando global vía [pipx](https://pipx.pypa.io)
+(el script clona internamente):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/EmaSleal/video-transcriber/main/install.sh | sh
+```
+
+Config y datos quedan en `~/.video-transcriber/`, no en el directorio
+desde donde lo corras. Volvé a correr el instalador para actualizar a la
+última versión de `main` — todavía no hay releases etiquetados.
+
+También instalable directo con el extra `rag` de `pyproject.toml`:
+
+```bash
+pipx install "video-transcriber[rag] @ git+https://github.com/EmaSleal/video-transcriber.git@main"
+```
+
+### Setup (desde el repo, para desarrollo)
 
 ```bash
 git clone https://github.com/EmaSleal/video-transcriber.git
